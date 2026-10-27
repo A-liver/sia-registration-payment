@@ -31,4 +31,5 @@ export const ERROR_CODE = Object.freeze({
   LEGACY_UNAVAILABLE: 'legacy_unavailable',
   PAYMENT_DECLINED: 'payment_declined',
   PAYMENT_TIMEOUT: 'payment_timeout',
+  INTERNAL: 'internal_error',
 });

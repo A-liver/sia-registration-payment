@@ -39,3 +39,21 @@ Each module under `services/api/` exports an Express router from its `index.js`.
 - `PAYMENT_GATEWAY=stub` points the gateway client at the stub on port 4002. This is the default for development, tests and load tests.
 - `PAYMENT_GATEWAY=paypal` points the same client at the PayPal sandbox. Used for a few end-to-end checks.
 - The client code is identical in both cases. Only the base URL and credentials differ.
+
+## Reference pattern: copy `mocks/legacy-records/`
+
+The legacy records mock is the pattern every module follows, and `mocks/paypal-stub/` follows the same layers (routes, services, middleware, in-memory state instead of SQL). Read them before writing yours.
+
+| File                                    | Role                                                                        |
+| --------------------------------------- | --------------------------------------------------------------------------- |
+| `server.js`                             | Starts the app: creates the pool, builds repositories, listens on a port    |
+| `app.js`                                | `createApp({...})` receives everything it needs, so tests can pass fakes    |
+| `routes/`                               | HTTP only: read the request, call a service, send the response              |
+| `services/`                             | Business rules, no Express objects, throw `AppError(status, code, message)` |
+| `repositories/`                         | SQL only, parameterized queries                                             |
+| `errors.js`, `validation.js`            | One error type and small input checks                                       |
+| `schema.sql`, `seed.sql`, `db-setup.js` | Tables, demo data, and a safe re-runnable setup                             |
+| `app.test.js`                           | Fast tests with fake repositories, run in CI without a database             |
+| `repositories.integration.test.js`      | Tests against a real database, run with `npm run test:db`                   |
+
+Rules the pattern shows: validate at the edge, standard error shape from `contracts/statuses.js`, dependencies passed in, idempotent writes enforced by a UNIQUE key and handled by catching the duplicate error, and database outages reported as `legacy_unavailable` instead of a crash.
