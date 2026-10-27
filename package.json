@@ -15,7 +15,9 @@
     "test": "node --test",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:setup:legacy": "node --env-file=.env mocks/legacy-records/setup-db.js",
+    "test:db": "cross-env RUN_DB_TESTS=1 node --env-file=.env --test \"mocks/legacy-records/**/*.integration.test.js\""
   },
   "dependencies": {
     "express": "^5.3.0",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "concurrently": "^10.0.6",
+    "cross-env": "^10.1.0",
     "eslint": "^10.13.0",
     "globals": "^17.13.0",
     "prettier": "^3.9.10"

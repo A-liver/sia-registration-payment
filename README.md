@@ -19,18 +19,27 @@ cp .env.example .env      # on Windows PowerShell: Copy-Item .env.example .env
 
 Open `.env` and fill in your MySQL user and password. Leave `PAYMENT_GATEWAY=stub` unless you are testing PayPal.
 
+Create the legacy records database (needs MySQL running):
+
+```bash
+npm run db:setup:legacy    # safe to run again; add "-- --reset" to wipe and reseed
+```
+
 ```bash
 npm run dev     # starts the API (3000), legacy mock (4001), payment stub (4002)
 ```
 
-The dev scripts start working as each module is added. Until then a missing server file is expected.
+The legacy mock and the payment stub are built. The main API (`services/api/server.js`) is not yet, so `npm run dev:api` fails until it is added.
+
+Try the payment stub: `npm run dev:paypal-stub`, then open `http://localhost:4002/health`.
 
 ## Checks
 
 ```bash
 npm run lint
 npm run format:check
-npm test
+npm test            # fast tests, no database needed
+npm run test:db     # also tests against your local MySQL (uses database sia_legacy_test)
 ```
 
 ## PayPal sandbox (only when testing the real gateway)
