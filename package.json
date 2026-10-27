@@ -1,0 +1,31 @@
+{
+  "name": "sia-registration-payment",
+  "version": "0.1.0",
+  "private": true,
+  "description": "University Registration and Online Payment System (SIA midterm project)",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,legacy,paypal-stub -c blue,green,yellow \"npm:dev:api\" \"npm:dev:legacy\" \"npm:dev:paypal-stub\"",
+    "dev:api": "node --watch --env-file=.env services/api/server.js",
+    "dev:legacy": "node --watch --env-file=.env mocks/legacy-records/server.js",
+    "dev:paypal-stub": "node --watch --env-file=.env mocks/paypal-stub/server.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10"
+  }
+}

@@ -1,0 +1,6 @@
+# Keep line endings as LF on every machine, so Prettier passes on Windows too.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.woff2 binary

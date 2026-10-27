@@ -1,0 +1,13 @@
+# Replace LEAD-USERNAME with the lead's GitHub username before pushing.
+# The lead is the required reviewer for everything. To also require the module
+# owner on a folder, add their username after the lead, for example:
+#   /services/api/registration/   @LEAD-USERNAME @member3-username
+
+*                       @A-liver
+/contracts/             @A-liver
+/db/                    @A-liver
+/.github/               @A-liver
+/package.json           @A-liver
+/package-lock.json      @A-liver
+/CLAUDE.md              @A-liver
+/docs/DESIGN.md         @A-liver
