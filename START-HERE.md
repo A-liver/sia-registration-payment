@@ -38,7 +38,7 @@ Do not use a folder inside OneDrive. Use `C:\dev`.
 ```powershell
 mkdir C:\dev
 cd C:\dev
-git clone https://github.com/<lead-username>/sia-registration-payment.git
+git clone https://github.com/A-liver/sia-registration-payment.git
 cd sia-registration-payment
 npm install
 Copy-Item .env.example .env
