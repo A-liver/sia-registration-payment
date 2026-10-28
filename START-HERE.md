@@ -128,11 +128,11 @@ Before you ask Claude to edit a file, paste the current version into the chat. N
 | Member   | Brief                        | Your folders                                                        |
 | -------- | ---------------------------- | ------------------------------------------------------------------- |
 | Lead     | `00-lead.md`                 | `contracts/`, `db/`, `services/api/server.js`, `auth/`, `payments/` |
-| Member 2 | `01-records.md`              | `mocks/legacy-records/`, `services/api/records/`, `load-tests/`     |
-| Member 3 | `02-payment-gateway.md`      | `mocks/paypal-stub/`, `services/api/payment-gateway/`               |
-| Member 4 | `03-registration-catalog.md` | `services/api/registration/`, `catalog/`, `gateway/`                |
-| Member 5 | `04-recovery.md`             | `services/api/recovery/`                                            |
-| Member 6 | `05-portal-ui.md`            | `portal/`                                                           |
+| Tacras | `01-records.md`              | `mocks/legacy-records/`, `services/api/records/`, `load-tests/`     |
+| Sagayno | `02-payment-gateway.md`      | `mocks/paypal-stub/`, `services/api/payment-gateway/`               |
+| Lawag | `03-registration-catalog.md` | `services/api/registration/`, `catalog/`, `gateway/`                |
+| John Reiner | `04-recovery.md`             | `services/api/recovery/`                                            |
+| Capeleno | `05-portal-ui.md`            | `portal/`                                                           |
 
 Only edit inside your own folders. If you need a change in `contracts/`, `db/`, `package.json` or `.github/`, open an issue for the lead. Do not edit them yourself.
 
